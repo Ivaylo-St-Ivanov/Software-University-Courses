@@ -13,29 +13,50 @@ function ladybugs(input) {
 
     for (element of inputCopy) {
         let current = element.split(' ');
+
         let startingIndex = +current[0];
         if (field[startingIndex] === 1) {
             let ladybugOnIndex = startingIndex;
             let direction = current[1];
             let flyLength = +current[2];
 
-            if (direction === 'left') {
-                flyLength *= -1;
+            if (field[ladybugOnIndex] != 1 || ladybugOnIndex < 0 || ladybugOnIndex >= fieldSize) {
+                continue;
             }
 
-            while (field[ladybugOnIndex] === 1 && ladybugOnIndex >= 0 && ladybugOnIndex < fieldSize) {
-                ladybugOnIndex += flyLength;
+            if (flyLength < 0) {
+                flyLength = Math.abs(flyLength);
+                if (direction == 'right') {
+                    direction = 'left';
+                } else {
+                    direction = 'right';
+                }
             }
 
             field[startingIndex] = 0;
-            if (ladybugOnIndex >= 0 && ladybugOnIndex < fieldSize) {
-                field[ladybugOnIndex] = 1;
+            if (direction == 'right') {
+                ladybugOnIndex += flyLength;
+                if (field[ladybugOnIndex] === 1) {
+                    while (field[ladybugOnIndex] === 1) {
+                        ladybugOnIndex += flyLength;
+                    }
+                }
+                if (field[ladybugOnIndex] < fieldSize) {
+                    field[ladybugOnIndex] = 1;
+                }
+            } else {
+                ladybugOnIndex -= flyLength;
+                if (field[ladybugOnIndex] === 1) {
+                    while (field[ladybugOnIndex] === 1) {
+                        ladybugOnIndex -= flyLength;
+                    }
+                }
+                if (field[ladybugOnIndex] >= 0) {
+                    field[ladybugOnIndex] = 1;
+                }
             }
         }
     }
 
     console.log(field.join(' '));
 }
-ladybugs([ 3, '0 1',
-'0 right 1',
-'2 right 1' ]);
