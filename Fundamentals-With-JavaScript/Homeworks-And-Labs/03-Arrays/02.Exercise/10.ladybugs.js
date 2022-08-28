@@ -2,7 +2,7 @@ function ladybugs(input) {
 
     let inputCopy = input.slice(0);
     let fieldSize = inputCopy.shift();
-    let ladybugsIndexes = inputCopy.shift().split(' ');
+    let ladybugsIndexes = inputCopy.shift().split(' ').map(Number);
 
     let field = new Array(fieldSize).fill(0);
     for (let index of ladybugsIndexes) {
