@@ -1,0 +1,44 @@
+html {
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+    color: rgb(51, 51, 51);
+}
+
+body {
+    background-color: rgb(238, 238, 238);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+article {
+    display: inline-block;
+    width: 59%;
+}
+
+img {
+    width: 75%;
+}
+
+span {
+    font-weight: 600;
+    font-size: 19px;
+}
+
+aside {
+    display: inline-block;
+    width: 40%;
+    vertical-align: top;
+    margin-top: 15px;
+}
+
+li {
+    width: 55%;
+}
+
+footer {
+    margin: 20px auto;
+}
