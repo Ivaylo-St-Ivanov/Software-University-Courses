@@ -1,0 +1,26 @@
+@import "https://use.fontawesome.com/releases/v5.10.2/css/all.css";
+
+/* ul {
+    display: inline-block;
+} */
+
+li {
+    display: inline-block;
+    list-style-type: none;
+}
+
+a {
+    border-radius: 50%;
+    background-color: lightgray;
+    padding: 10px;
+    margin: 10px;
+    color: black;
+}
+
+a:hover {
+    color: blue;
+}
+
+.fa-google-plus:hover {
+    color: red;
+}
