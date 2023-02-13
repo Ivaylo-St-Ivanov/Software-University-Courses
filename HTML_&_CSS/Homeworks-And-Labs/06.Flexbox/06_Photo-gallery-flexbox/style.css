@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    margin: 30px;
+    padding: 20px;
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 20px;
+}
+
+li {
+    display: flex;
+}
+
+img {
+    border: 5px solid black;
+    padding: 10px;
+    object-fit: none;
+}
