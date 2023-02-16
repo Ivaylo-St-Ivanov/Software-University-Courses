@@ -1,0 +1,10 @@
+table tbody tr td:nth-child(odd) {
+    font-weight: bold;
+}
+
+@media screen and (min-width: 480px) {
+    table thead {
+        color: #fff;
+        text-align: left;
+    }
+}

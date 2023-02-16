@@ -1,0 +1,48 @@
+body {
+    background-color: lightgray;
+}
+
+table {
+    display: grid;
+    margin: 20px;
+}
+
+table thead {
+    display: none;
+}
+
+table tbody tr {
+    display: grid;
+    grid-template-columns: 0.3fr auto;
+}
+
+table tbody tr td {
+    border: 1px solid gray;
+    padding: 5px;
+}
+
+@media screen and (min-width: 500px) {
+    table thead {
+        display: block;
+    }
+
+    table thead tr {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        background-color: black;
+    }
+
+    table thead tr th {
+        border: 1px solid gray;
+        padding: 5px;
+    }
+
+    table tbody tr {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    table tbody tr td:nth-child(odd) {
+        display: none;
+    }
+}
+
