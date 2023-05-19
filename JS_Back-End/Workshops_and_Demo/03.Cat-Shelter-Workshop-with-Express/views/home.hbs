@@ -1,0 +1,13 @@
+<main>
+    <section class="cats">
+        {{#if cats}}
+        <ul>
+            {{#each cats}}
+                {{>catsCard}}
+            {{/each}}
+        </ul>
+        {{else}}
+        <p>No cats yet!</p>
+        {{/if}}
+    </section>
+</main>
