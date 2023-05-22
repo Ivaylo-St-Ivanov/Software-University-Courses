@@ -2,7 +2,7 @@ const express = require('express');
 const hbr = require('express-handlebars');
 
 const homeController = require('./controllers/homeController')
-const catalogController = require('./controllers/catalogController');
+const createController = require('./controllers/createController');
 
 const handlebars = hbr.create({
     extname: '.hbs'
@@ -10,21 +10,14 @@ const handlebars = hbr.create({
 
 const app = express();
 
-app.use(express.static('public'));
-
 app.engine('hbs', handlebars.engine);
 app.set('view engine', '.hbs');
 
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: false}));
+
 app.use(homeController);
-
-app.get('/cats/add-breed', (req, res) => {
-    res.render('addBreed');
-});
-
-app.get('/cats/add-cat', (req, res) => {
-    res.render('addCat');
-});
-
-app.use('/catalog', catalogController);
+app.use('/cats', homeController);
+app.use('/cats', createController);
 
 app.listen(5000, () => console.log('This server is running on port 5000...'));
