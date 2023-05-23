@@ -20,6 +20,17 @@ const addCat = async (data) => {
         description: data.description
     });
 
+    await persist();
+};
+
+const deleteCatById = async (id) => {
+    const index = cats.findIndex(c => c['data-id'] == id);
+    cats.splice(index, 1);
+
+    await persist();
+};
+
+const persist = async () => {
     return new Promise((resolve, reject) => {
         fs.writeFile(
             './services/data.json',
@@ -37,5 +48,6 @@ const addCat = async (data) => {
 module.exports = {
     getAllCats,
     getCatById,
-    addCat
+    addCat,
+    deleteCatById
 };
