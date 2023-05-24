@@ -4,6 +4,7 @@ const expressConfig = require('./config/expressConfig');
 const handlebarsConfig = require('./config/handlebarsConfig');
 
 const cubeController = require('./controllers/cubeController');
+const createController =require('./controllers/createController');
 
 const PORT = 3000;
 
@@ -13,6 +14,7 @@ expressConfig(app);
 handlebarsConfig(app);
 
 app.use(cubeController);
+app.use(createController);
 app.use('*', (req, res) => {
     res.render('404');
 });

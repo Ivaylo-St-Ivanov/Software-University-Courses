@@ -37,7 +37,15 @@ const getCubeById = (id) => {
     return data.find(c => c.id == id);
 };
 
+const addCube = (cubeData) => {
+    data.push({
+        id: 'asdf' + ('0000' + (Math.random() * 99999 | 0)).slice(-8),
+        ...cubeData
+    })
+};
+
 module.exports = {
     getAllCubes,
-    getCubeById
+    getCubeById,
+    addCube
 };
