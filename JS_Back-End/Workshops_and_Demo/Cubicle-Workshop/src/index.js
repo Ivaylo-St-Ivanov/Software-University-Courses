@@ -13,5 +13,8 @@ expressConfig(app);
 handlebarsConfig(app);
 
 app.use(homeController);
+app.use('*', (req, res) => {
+    res.render('404');
+});
 
 app.listen(PORT, () => console.log(`This server is running on port ${PORT}...`));
