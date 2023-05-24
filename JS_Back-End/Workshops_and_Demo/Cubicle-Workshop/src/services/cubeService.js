@@ -33,6 +33,11 @@ const getAllCubes = () => {
     return data;
 };
 
+const getCubeById = (id) => {
+    return data.find(c => c.id == id);
+};
+
 module.exports = {
-    getAllCubes
+    getAllCubes,
+    getCubeById
 };
