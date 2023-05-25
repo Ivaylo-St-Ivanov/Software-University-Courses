@@ -3,8 +3,7 @@ const express = require('express');
 const expressConfig = require('./config/expressConfig');
 const handlebarsConfig = require('./config/handlebarsConfig');
 
-const cubeController = require('./controllers/cubeController');
-const createController =require('./controllers/createController');
+const routes = require('./routes');
 
 const PORT = 3000;
 
@@ -13,10 +12,6 @@ const app = express();
 expressConfig(app);
 handlebarsConfig(app);
 
-app.use(cubeController);
-app.use(createController);
-app.use('*', (req, res) => {
-    res.render('404');
-});
+app.use(routes);
 
 app.listen(PORT, () => console.log(`This server is running on port ${PORT}...`));

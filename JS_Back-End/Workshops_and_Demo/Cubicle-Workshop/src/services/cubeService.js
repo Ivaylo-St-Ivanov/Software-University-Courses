@@ -29,8 +29,22 @@ const data = [
     }
 ]
 
-const getAllCubes = () => {
-    return data;
+const getAllCubes = (search, from, to) => {
+    let result = data.slice();
+
+    if (search) {
+        result = result.filter(c => c.name.toLowerCase().includes(search.toLowerCase()));
+    }
+
+    if (from) {
+        result = result.filter(c => c.level >= Number(from));
+    }
+
+    if (to) {
+        result = result.filter(c => c.level <= Number(to));
+    }
+
+    return result;
 };
 
 const getCubeById = (id) => {
