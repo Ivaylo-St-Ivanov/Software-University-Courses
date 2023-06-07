@@ -26,8 +26,18 @@ const addCube = async (cubeData) => {
     await cube.save();
 };
 
+const attachAccessory = async (cubeId, accessoryId) => {
+    return Cube.findByIdAndUpdate(cubeId, { $push: { accessories: accessoryId } });
+
+    // const cube = await Cube.findById(cubeId);
+    // cube.accessories.push(accessoryId);
+
+    // return cube.save();
+};
+
 module.exports = {
     getAllCubes,
     getCubeById,
-    addCube
+    addCube,
+    attachAccessory
 };

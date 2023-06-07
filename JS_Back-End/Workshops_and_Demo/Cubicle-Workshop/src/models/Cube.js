@@ -4,7 +4,11 @@ const cubeSchema = new mongoose.Schema({
     name: String,
     description: String,
     imageUrl: String,
-    level: Number
+    level: Number,
+    accessories: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Accessory'
+    }]
 });
 
 const Cube = mongoose.model('Cube', cubeSchema);
