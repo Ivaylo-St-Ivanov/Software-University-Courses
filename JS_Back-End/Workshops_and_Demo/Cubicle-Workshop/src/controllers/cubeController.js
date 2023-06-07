@@ -32,7 +32,7 @@ router.get('/:cubeId/attach-accessory', async (req, res) => {
 router.post('/:cubeId/attach-accessory', async (req, res) => {
     const cubeId = req.params.cubeId;
     const { accessory: accessoryId } = req.body;
-console.log(accessoryId);
+
     await attachAccessory(cubeId, accessoryId);
 
     res.redirect(`/details/${cubeId}`);

@@ -18,7 +18,7 @@ const getAllCubes = (search, from, to) => {
     return result;
 };
 
-const getCubeById = (id) => Cube.findById(id);
+const getCubeById = (id) => Cube.findById(id).populate('accessories');
 
 const addCube = async (cubeData) => {
     const cube = new Cube(cubeData);
