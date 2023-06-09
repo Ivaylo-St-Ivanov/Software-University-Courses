@@ -3,7 +3,7 @@ const jwt = require('../lib/jwt');
 
 const User = require('../models/User');
 
-const SECRET = '4ddd8f9f6b5699f3a476545f824180ee5af8228dec051e94ce6326d21392eb2a';
+const { SECRET } = require('../config/config');
 
 exports.register = (userData) => User.create(userData);
 
