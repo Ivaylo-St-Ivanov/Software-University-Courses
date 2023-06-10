@@ -20,6 +20,13 @@ router.post('/create', async (req, res) => {
     res.redirect('/');
 });
 
+router.get('/:cubeId/edit', async (req, res) => {
+    const id = req.params.cubeId;
+    const cube = await getCubeById(id);
+
+    res.render('cube/edit', cube);
+});
+
 router.get('/:cubeId/delete', async (req, res) => {
     const id = req.params.cubeId;
     const cube = await getCubeById(id).lean();
