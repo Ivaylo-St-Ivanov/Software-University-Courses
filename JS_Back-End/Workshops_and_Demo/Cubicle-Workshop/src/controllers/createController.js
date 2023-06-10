@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { addCube, getCubeById } = require('../services/cubeService');
+const { addCube, getCubeById, deleteCube } = require('../services/cubeService');
 
 router.get('/create', (req, res) => {
     res.render('cube/create');
@@ -22,10 +22,17 @@ router.post('/create', async (req, res) => {
 
 router.get('/:cubeId/delete', async (req, res) => {
     const id = req.params.cubeId;
-
-    const cube = await getCubeById(id);
+    const cube = await getCubeById(id).lean();
 
     res.render('cube/delete', cube);
+});
+
+router.post('/:cubeId/delete', async (req, res) => {
+    const id = req.params.cubeId;
+    
+    await deleteCube(id);
+
+    res.redirect('/');
 });
 
 module.exports = router;

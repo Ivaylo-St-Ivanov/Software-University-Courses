@@ -26,6 +26,8 @@ const addCube = async (cubeData) => {
     await cube.save();
 };
 
+const deleteCube = (id) => Cube.findByIdAndDelete(id);
+
 const attachAccessory = async (cubeId, accessoryId) => {
     return Cube.findByIdAndUpdate(cubeId, { $push: { accessories: accessoryId } });
 
@@ -39,5 +41,6 @@ module.exports = {
     getAllCubes,
     getCubeById,
     addCube,
+    deleteCube,
     attachAccessory
 };
