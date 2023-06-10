@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 const { addCube, getCubeById, editCube, deleteCube } = require('../services/cubeService');
+const { getLevelOptions } = require('../utils/viewHelpers');
 
 router.get('/create', (req, res) => {
     res.render('cube/create');
@@ -23,8 +24,9 @@ router.post('/create', async (req, res) => {
 router.get('/:cubeId/edit', async (req, res) => {
     const id = req.params.cubeId;
     const cube = await getCubeById(id).lean();
+    const options = getLevelOptions(cube.level);
 
-    res.render('cube/edit', cube);
+    res.render('cube/edit', { cube, options });
 });
 
 router.post('/:cubeId/edit', async (req, res) => {
@@ -39,13 +41,14 @@ router.post('/:cubeId/edit', async (req, res) => {
 router.get('/:cubeId/delete', async (req, res) => {
     const id = req.params.cubeId;
     const cube = await getCubeById(id).lean();
+    const options = getLevelOptions(cube.level);
 
-    res.render('cube/delete', cube);
+    res.render('cube/delete', { cube, options });
 });
 
 router.post('/:cubeId/delete', async (req, res) => {
     const id = req.params.cubeId;
-    
+
     await deleteCube(id);
 
     res.redirect('/');
