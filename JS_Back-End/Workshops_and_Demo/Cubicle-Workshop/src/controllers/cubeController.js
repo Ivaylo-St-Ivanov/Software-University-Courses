@@ -17,7 +17,7 @@ router.get('/about', (req, res) => {
 router.get('/details/:_id', async (req, res) => {
     const id = req.params._id;
     const cube = await getCubeById(id).lean();
-    res.render('details', cube);
+    res.render('cube/details', cube);
 });
 
 router.get('/:cubeId/attach-accessory', async (req, res) => {
