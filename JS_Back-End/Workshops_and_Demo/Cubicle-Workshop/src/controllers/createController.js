@@ -13,7 +13,8 @@ router.post('/create', async (req, res) => {
         name,
         description,
         imageUrl,
-        level: Number(level)
+        level: Number(level),
+        owner: req.user._id
     });
 
     res.redirect('/');
