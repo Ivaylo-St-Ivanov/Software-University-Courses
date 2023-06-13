@@ -23,7 +23,9 @@ router.post('/login', async (req, res) => {
     
     const token = await userService.login(username, password);
 
-    res.send('Logged in');
+    res.cookie('token', token);
+
+    res.redirect('/');
 });
 
 module.exports = router;
