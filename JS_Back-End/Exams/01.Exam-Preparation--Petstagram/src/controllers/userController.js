@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 const userService = require('../services/userService');
+const { TOKEN_KEY } = require('../config/config');
 
 router.get('/register', (req, res) => {
     res.render('users/register');
@@ -11,7 +12,7 @@ router.post('/register', async (req, res) => {
 
     await userService.register({ username, email, password, repeatPassword });
 
-    res.send('Registered');
+    res.redirect('/users/login');
 });
 
 router.get('/login', (req, res) => {
@@ -23,9 +24,15 @@ router.post('/login', async (req, res) => {
     
     const token = await userService.login(username, password);
 
-    res.cookie('token', token);
+    res.cookie(TOKEN_KEY, token);
 
     res.redirect('/');
 });
+
+router.get('/logout', (req, res) => {
+    res.clearCookie('token');
+
+    res.redirect('/');
+})
 
 module.exports = router;
