@@ -4,8 +4,7 @@ import { NewThemeComponent } from './new-theme/new-theme.component';
 import { CurrentThemeComponent } from './current-theme/current-theme.component';
 import { ThemeRoutingModule } from './theme-routing.module';
 import { RouterModule } from '@angular/router';
-
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +14,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     ThemeRoutingModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ]
 })
 export class ThemeModule { }
