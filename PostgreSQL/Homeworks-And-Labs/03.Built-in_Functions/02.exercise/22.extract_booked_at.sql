@@ -1,0 +1,9 @@
+SELECT
+    EXTRACT(YEAR FROM booked_at),
+    EXTRACT(MONTH FROM booked_at),
+    EXTRACT(DAY FROM booked_at),
+    EXTRACT(HOUR FROM booked_at AT TIME ZONE 'UTC'),
+    EXTRACT(MINUTE FROM booked_at),
+    CEIL(EXTRACT(SECOND FROM booked_at))
+FROM 
+    bookings; 
